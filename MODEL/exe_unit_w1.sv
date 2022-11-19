@@ -11,19 +11,55 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
     logic [m - 1:0] temp;
     always_comb 
     begin
-        // konwersja ZM na U2
-        if(i_oper == 2'b00)
+        // POROWNANIE LICZB
+        if(i_oper == 2'b01)
         begin
             if(i_argA[m - 1] == 1'b0 && i_argB[m - 1] == 1'b0)
             begin
-                temp = i_argA - i_argB;
+                if(i_argA >= i_argB)
+                begin
+                    o_result = '0;
+                end
                 if(i_argA < i_argB)
                 begin
-                    temp[m - 1] = 1;
+                    logic [m - 1:0] temp1;
+                    temp1 = '1;
+                    temp1[m - 1] = '0;
+                    o_result = temp1;
                 end
-                o_result = temp;
+            end
+            if(i_argB[m - 1] == 1'b0 && i_argA[m - 1] == 1'b1)
+            begin
+                logic [m - 1:0] temp1;
+                temp1 = '1;
+                temp1[m - 1] = '0;
+                o_result = temp1;
+            end
+            if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
+            begin
+                o_result = '0;
+            end
+            if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b1)
+            begin
+                logic [m - 1:0] temp1;
+                logic [m - 1:0] temp2;
+                temp1 = i_argA;
+                temp2 = i_argB;
+                temp1[m - 1] = '0;
+                temp1[m - 1] = '0;
+                if(temp1 > temp2)
+                begin
+                    temp1 = '1;
+                    temp1[m - 1] = '0;
+                    o_result = temp1;
+                end
+                if(temp1 <= temp2)
+                begin
+                    o_result = '0;
+                end
             end
         end
+        // KONWERTOWANIE ZNAK MODUL NA U2
         if(i_oper == 2'b11)
         begin
             if(i_argA[m - 1] == 1'b0)
@@ -32,11 +68,16 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
             end
             if(i_argA[m - 1] == 1'b1)
             begin
-                temp = i_argA;
-                temp[m - 1] = 1'b0;
-                temp = ~temp;
-                temp = temp + 1'b1;
-                o_result = temp;
+                logic [m - 1:0] temp1;
+                logic [m - 1:0] temp2;
+                temp1 = i_argA;
+                temp1[m - 1] = 1'b0;
+                temp1 = ~temp1;
+                temp2 = temp1;
+                temp2 = '0;
+                temp2[0] = 1'b1;
+                temp1 = temp1 + temp2;
+                o_result = temp1;
             end
         end
     end
