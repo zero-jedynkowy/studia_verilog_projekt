@@ -1,84 +1,48 @@
+`include "otherModules.sv"
+
 module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
+
     input logic [n - 1:0] i_oper;
     input logic signed [m - 1:0] i_argA;
     input logic signed [m - 1:0] i_argB;
     input logic i_clk;
     input logic i_rsn;
+
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
-    logic [m - 1:0] temp;
-    always_comb 
+
+    logic [1:0] o_status1;
+    logic [1:0] o_status2;
+    logic [1:0] o_status3;
+    logic [1:0] o_status4;
+    logic [m - 1:0] o_result1;
+    logic [m - 1:0] o_result2;
+    logic [m - 1:0] o_result3;
+    logic [m - 1:0] o_result4;
+
+    mod4 # (.m(m), .n(n)) m_mod4 (.i_argA(i_argA), .o_result(o_result4), .o_status(o_status4));
+
+    always_ff @(posedge i_clk, negedge i_rsn)
     begin
-        // POROWNANIE LICZB
-        if(i_oper == 2'b01)
+        if(i_rsn == '0)
         begin
-            if(i_argA[m - 1] == 1'b0 && i_argB[m - 1] == 1'b0)
-            begin
-                if(i_argA >= i_argB)
-                begin
-                    o_result = '0;
-                end
-                if(i_argA < i_argB)
-                begin
-                    logic [m - 1:0] temp1;
-                    temp1 = '1;
-                    temp1[m - 1] = '0;
-                    o_result = temp1;
-                end
-            end
-            if(i_argB[m - 1] == 1'b0 && i_argA[m - 1] == 1'b1)
-            begin
-                logic [m - 1:0] temp1;
-                temp1 = '1;
-                temp1[m - 1] = '0;
-                o_result = temp1;
-            end
-            if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
-            begin
-                o_result = '0;
-            end
-            if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b1)
-            begin
-                logic [m - 1:0] temp1;
-                logic [m - 1:0] temp2;
-                temp1 = i_argA;
-                temp2 = i_argB;
-                temp1[m - 1] = '0;
-                temp1[m - 1] = '0;
-                if(temp1 > temp2)
-                begin
-                    temp1 = '1;
-                    temp1[m - 1] = '0;
-                    o_result = temp1;
-                end
-                if(temp1 <= temp2)
-                begin
-                    o_result = '0;
-                end
-            end
+            o_status1 = '0;
         end
-        // KONWERTOWANIE ZNAK MODUL NA U2
-        if(i_oper == 2'b11)
+        else
         begin
-            if(i_argA[m - 1] == 1'b0)
-            begin
-                o_result = i_argA;
-            end
-            if(i_argA[m - 1] == 1'b1)
-            begin
-                logic [m - 1:0] temp1;
-                logic [m - 1:0] temp2;
-                temp1 = i_argA;
-                temp1[m - 1] = 1'b0;
-                temp1 = ~temp1;
-                temp2 = temp1;
-                temp2 = '0;
-                temp2[0] = 1'b1;
-                temp1 = temp1 + temp2;
-                o_result = temp1;
-            end
+            case(i_oper)
+                1'b00: o_result = '1;
+                2'b01: o_result = '1;
+                3'b10: o_result = '1;
+                4'b11:  
+                begin
+                    o_result = o_result4;
+                    o_status = o_status4;
+                end
+                default: o_result = '0;
+            endcase
         end
     end
 endmodule
