@@ -11,7 +11,7 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
     input logic i_rsn;
 
     output logic [m - 1:0] o_result;
-    output logic [1:0] o_status;
+    output logic [3:0] o_status;
 
     logic [1:0] o_status1;
     logic [1:0] o_status2;
