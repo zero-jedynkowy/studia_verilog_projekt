@@ -44,14 +44,11 @@ endmodule
 module mod4(i_argA, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
-
     input logic [m - 1:0] i_argA;
-
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
-
     logic [m - 1:0] temp;
-
+    integer x;
     always_comb 
     begin
         temp = i_argA;
@@ -65,6 +62,22 @@ module mod4(i_argA, o_result, o_status);
             temp = ~temp;
             temp = temp + 1'b1;
             o_result = temp;
+        end
+        if(temp[m - 1] == '1)
+        begin
+            o_status = 2'b01;
+        end
+        for(int i=0; i<m; i++)
+        begin
+            if(temp[i] == '1) x = x + 1;
+        end
+        if(x % 2 == 0)
+        begin
+            o_status = 2'b10;
+        end
+        if(temp == '1)
+        begin
+            o_status = 2'b11;
         end
     end
 endmodule
