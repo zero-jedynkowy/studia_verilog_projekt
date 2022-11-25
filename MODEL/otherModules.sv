@@ -1,36 +1,42 @@
-module mod1(i_argA, o_result, o_status);
+// ODEJMOWANIE LICZBA: A - B
+module mod1(i_argA, i_argB, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
-    input logic signed [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argB;
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
     always_comb 
     begin
-        
+        o_result = i_argA - i_argB;
     end
 endmodule
 
-module mod2(i_argA, o_result, o_status);
+// POROWNANIE LICZB A < B
+module mod2(i_argA, i_argB, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
-    input logic signed [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argB;
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
     always_comb 
     begin
-        
+        o_result = ~i_argA;
     end
 endmodule
 
-module mod3(i_argA, o_result, o_status);
+// USTAWIENIE BITY W A POPRZEZ B
+module mod3(i_argA, i_argB, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
-    input logic signed [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argB;
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
     always_comb 
     begin
-        
+        o_result = ~i_argA;
     end
 endmodule
 
@@ -39,7 +45,7 @@ module mod4(i_argA, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
 
-    input logic signed [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argA;
 
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
