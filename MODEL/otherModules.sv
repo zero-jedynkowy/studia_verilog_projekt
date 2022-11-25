@@ -21,6 +21,8 @@ module mod2(i_argA, i_argB, o_result, o_status);
     output logic [m - 1:0] o_result;
     output logic [3:0] o_status;
     logic [m - 1:0] temp;
+    logic [3:0] status;
+    integer x;
     always_comb 
     begin
         if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
@@ -65,6 +67,31 @@ module mod2(i_argA, i_argB, o_result, o_status);
                 o_result = temp;
             end
         end
+        status = '0;
+        if(temp == '0)
+        begin
+            status = status + 4'b0001;
+        end
+        if(temp[m - 1] == '1)
+        begin
+            status = status + 4'b0010;
+        end
+        for(int i = 0; i < m; i++)
+        begin
+            if(temp[i] == 1)
+            begin
+                x = x + 1;
+            end
+        end
+        if(x % 2 == 0)
+        begin
+            status = status + 4'b0100;
+        end
+        if(temp == '1)
+        begin
+            status = status + 4'b1000;
+        end
+        o_status = status;
     end
 endmodule
 
