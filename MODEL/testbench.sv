@@ -2,7 +2,7 @@
 `include "exe_unit_w1.sv"
 
 module testbench;
-    parameter BITS_1 = 3;
+    parameter BITS_1 = 4;
     parameter BITS_2 = 2;
     logic [BITS_2 - 1:0] oper;
     logic signed [BITS_1 - 1:0] a, b;
@@ -20,7 +20,7 @@ module testbench;
         oper = '1;
         rsn = '1;
         #1
-        a = 4'b000;
+        a = 4'b1000;
         clk = '1;
         #1
         clk = '0;

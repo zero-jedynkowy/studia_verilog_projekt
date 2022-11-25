@@ -34,9 +34,20 @@ module mod3(i_argA, i_argB, o_result, o_status);
     input logic [m - 1:0] i_argB;
     output logic [m - 1:0] o_result;
     output logic [1:0] o_status;
+    logic [m - 1:0] temp;
     always_comb 
     begin
-        o_result = ~i_argA;
+        if((i_argB[m - 1] == 1)||(i_argB <= m))
+        begin
+            o_result = '0;
+            o_status = '0;
+        end
+        else
+        begin
+            temp = i_argA;
+            temp[i_argB] = 1'b01;
+            o_result = temp;
+        end
     end
 endmodule
 
@@ -59,9 +70,12 @@ module mod4(i_argA, o_result, o_status);
         else
         begin
             temp[m - 1] = 1'b0;
-            temp = ~temp;
-            temp = temp + 1'b1;
-            o_result = temp;
+            if(temp != '0)
+            begin
+                temp = ~temp;
+                temp = temp + 1'b1;
+                o_result = temp;
+            end
         end
         if(temp[m - 1] == '1)
         begin

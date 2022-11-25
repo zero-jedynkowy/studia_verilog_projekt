@@ -5,8 +5,8 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
     parameter n = 2;
 
     input logic [n - 1:0] i_oper;
-    input logic signed [m - 1:0] i_argA;
-    input logic signed [m - 1:0] i_argB;
+    input logic [m - 1:0] i_argA;
+    input logic [m - 1:0] i_argB;
     input logic i_clk;
     input logic i_rsn;
 
