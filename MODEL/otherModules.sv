@@ -173,6 +173,7 @@ module mod4(i_argA, o_result, o_status);
         if(temp == '0)
         begin
             status = status + 4'b0001;
+            o_result = 'x;
         end
         if(temp[m - 1] == '1)
         begin
