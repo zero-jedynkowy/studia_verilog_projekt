@@ -17,10 +17,10 @@ module testbench;
         $dumpfile("signals.vcd");
         $dumpvars(0, testbench);
         clk = '0;
-        oper = 2'b11;
+        oper = 2'b00;
         rsn = '1;
         #1
-        a = 4'b1000;
+        a = 4'b0111;
         b = 4'b0001;
         clk = '1;
         #1
