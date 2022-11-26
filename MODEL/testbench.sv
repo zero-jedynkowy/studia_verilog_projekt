@@ -8,7 +8,7 @@ module testbench;
     logic signed [BITS_1 - 1:0] a, b;
     logic clk, rsn;
     logic [BITS_1 - 1:0] result;
-    logic [1:0] status;
+    logic [3:0] status;
 
     exe_unit_w1 # (.m(BITS_1), .n(BITS_2)) m_exe_unit_w1 (.i_oper(oper), .i_argA(a), .i_argB(b), .i_clk(clk), .i_rsn(rsn), .o_status(status), .o_result(result));
 
@@ -17,10 +17,10 @@ module testbench;
         $dumpfile("signals.vcd");
         $dumpvars(0, testbench);
         clk = '0;
-        oper = 2'b01;
+        oper = 2'b11;
         rsn = '1;
         #1
-        a = 4'b1011;
+        a = 4'b1000;
         b = 4'b0001;
         clk = '1;
         #1

@@ -13,15 +13,15 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
     output logic [m - 1:0] o_result;
     output logic [3:0] o_status;
 
-    logic [1:0] o_status1;
-    logic [1:0] o_status2;
-    logic [1:0] o_status3;
-    logic [1:0] o_status4;
+    logic [3:0] o_status1;
+    logic [3:0] o_status2;
+    logic [3:0] o_status3;
+    logic [3:0] o_status4;
     logic [m - 1:0] o_result1;
     logic [m - 1:0] o_result2;
     logic [m - 1:0] o_result3;
     logic [m - 1:0] o_result4;
-    
+
     mod1 # (.m(m), .n(n)) m_mod1 (.i_argA(i_argA), .i_argB(i_argB), .o_result(o_result1), .o_status(o_status1));
     mod2 # (.m(m), .n(n)) m_mod2 (.i_argA(i_argA), .i_argB(i_argB), .o_result(o_result2), .o_status(o_status2));
     mod3 # (.m(m), .n(n)) m_mod3 (.i_argA(i_argA), .i_argB(i_argB), .o_result(o_result3), .o_status(o_status3));
@@ -36,7 +36,7 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
         else
         begin
             case(i_oper)
-                1'b00:
+                2'b00:
                 begin
                     o_result <= o_result1;
                     o_status <= o_status1;
@@ -46,12 +46,12 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
                     o_result <= o_result2;
                     o_status <= o_status2;
                 end
-                3'b10:
+                2'b10:
                 begin
                     o_result <= o_result3;
                     o_status <= o_status3;
                 end
-                4'b11:  
+                2'b11:  
                 begin
                     o_result <= o_result4;
                     o_status <= o_status4;

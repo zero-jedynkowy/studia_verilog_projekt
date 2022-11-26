@@ -16,13 +16,18 @@ endmodule
 module mod2(i_argA, i_argB, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
+
     input logic [m - 1:0] i_argA;
     input logic [m - 1:0] i_argB;
+    
     output logic [m - 1:0] o_result;
     output logic [3:0] o_status;
+
     logic [m - 1:0] temp;
     logic [3:0] status;
+
     integer x;
+
     always_comb 
     begin
         if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
@@ -99,13 +104,18 @@ endmodule
 module mod3(i_argA, i_argB, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
+
     input logic [m - 1:0] i_argA;
     input logic [m - 1:0] i_argB;
+
     output logic [m - 1:0] o_result;
     output logic [3:0] o_status;
+
     logic [m - 1:0] temp;
     logic [3:0] status;
+
     integer x;
+
     always_comb 
     begin
         status = '0;
@@ -146,12 +156,17 @@ endmodule
 module mod4(i_argA, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
+
     input logic [m - 1:0] i_argA;
+
     output logic [m - 1:0] o_result;
     output logic [3:0] o_status;
+
     logic [m - 1:0] temp;
     logic [3:0] status;
+
     integer x;
+
     always_comb 
     begin
         temp = i_argA;
