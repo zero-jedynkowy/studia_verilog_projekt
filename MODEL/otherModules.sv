@@ -44,7 +44,7 @@ module mod1(i_argA, i_argB, o_result, o_status);
             if(temp1 > temp2)
             begin
                 temp = temp1 - temp2;
-                temp[m - 1] = 1'b01;
+                temp[m - 1] = 1'b1;
             end
             else
             begin
@@ -123,6 +123,8 @@ module mod2(i_argA, i_argB, o_result, o_status);
 
     logic [m - 1:0] temp;
     logic [3:0] status;
+    logic [m - 1:0] temp1;
+    logic [m - 1:0] temp2;
 
     integer x;
 
@@ -140,8 +142,6 @@ module mod2(i_argA, i_argB, o_result, o_status);
         end
         if(i_argA[m - 1] == 1'b1 && i_argB[m - 1] == 1'b1)
         begin
-            logic [m - 1:0] temp1;
-            logic [m - 1:0] temp2;
             temp1 = i_argA;
             temp2 = i_argB;
             temp1[m - 1] = '0;
