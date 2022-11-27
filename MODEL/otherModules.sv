@@ -23,6 +23,7 @@ module mod1(i_argA, i_argB, o_result, o_status);
         checkFlag = '0;
         maxValue = '1;
         maxValue[m - 1] = 1'b0;
+        status = '0;
         if(i_argA[m - 1] == 1'b0 && i_argB[m - 1] == 1'b0)
         begin
             if(i_argA >= i_argB)
@@ -86,25 +87,25 @@ module mod1(i_argA, i_argB, o_result, o_status);
         else
         begin
             o_result = temp;
-        end
-        if(temp[m - 1] == '1)
-        begin
-            status = status + 4'b0010;
-        end
-        for(int i = 0; i < m; i++)
-        begin
-            if(temp[i] == 1)
+            if(temp[m - 1] == '1)
             begin
-                x = x + 1;
+                status = status + 4'b0010;
             end
-        end
-        if(x % 2 == 0)
-        begin
-            status = status + 4'b0100;
-        end
-        if(temp == '1)
-        begin
-            status = status + 4'b1000;
+            for(int i = 0; i < m; i++)
+            begin
+                if(temp[i] == 1)
+                begin
+                    x = x + 1;
+                end
+            end
+            if(x % 2 == 0)
+            begin
+                status = status + 4'b0100;
+            end
+            if(temp == '1)
+            begin
+                status = status + 4'b1000;
+            end
         end
         o_status = status;
     end
@@ -130,6 +131,7 @@ module mod2(i_argA, i_argB, o_result, o_status);
 
     always_comb 
     begin
+        status = '0;
         if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
         begin
             temp = '0;
@@ -171,10 +173,6 @@ module mod2(i_argA, i_argB, o_result, o_status);
             end
         end
         status = '0;
-        if(temp == '0)
-        begin
-            status = status + 4'b0001;
-        end
         if(temp[m - 1] == '1)
         begin
             status = status + 4'b0010;
@@ -268,6 +266,7 @@ module mod4(i_argA, o_result, o_status);
     always_comb 
     begin
         temp = i_argA;
+        status = '0;
         if(i_argA[m - 1] == 1'b0)
         begin
             o_result = temp;
