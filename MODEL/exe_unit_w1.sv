@@ -1,5 +1,3 @@
-`include "otherModules.sv"
-
 module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
     parameter m = 4;
     parameter n = 2;
@@ -36,21 +34,36 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
             2'b00:
             begin
                 new_result = o_result1;
-                new_status = o_status1;
             end
             2'b01:
             begin
                 new_result = o_result2;
-                new_status = o_status2;
             end
             2'b10:
             begin
                 new_result = o_result3;
-                new_status = o_status3;
             end
             2'b11:  
             begin
                 new_result = o_result4;
+            end
+            default: new_result = '0;
+        endcase
+        case(i_oper)
+            2'b00:
+            begin
+                new_status = o_status1;
+            end
+            2'b01:
+            begin
+                new_status = o_status2;
+            end
+            2'b10:
+            begin
+                new_status = o_status3;
+            end
+            2'b11:  
+            begin
                 new_status = o_status4;
             end
             default: o_result = '0;

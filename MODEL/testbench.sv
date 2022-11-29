@@ -1,5 +1,4 @@
 `timescale 1ns/1ps
-`include "exe_unit_w1.sv"
 
 module testbench;
     parameter BITS_1 = 4;

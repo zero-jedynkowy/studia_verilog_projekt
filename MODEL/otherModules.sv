@@ -19,6 +19,11 @@ module mod1(i_argA, i_argB, o_result, o_status);
     always_comb 
     begin
         temp = '0;
+        temp2 = '0;
+        temp1 = '0;
+        o_result = '0;
+        o_status = '0;
+        temp = '0;
         x = 0;
         checkFlag = '0;
         maxValue = '1;
@@ -131,6 +136,11 @@ module mod2(i_argA, i_argB, o_result, o_status);
 
     always_comb 
     begin
+        o_result = '0;
+        o_status = '0;
+        temp = '0;
+        temp2 = '0;
+        temp1 = '0;
         status = '0;
         if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
         begin
@@ -214,6 +224,8 @@ module mod3(i_argA, i_argB, o_result, o_status);
 
     always_comb 
     begin
+        o_result = '0;
+        o_status = '0;
         status = '0;
         temp = i_argA;
         if(i_argB[m - 1] != 1'b1 && m > i_argB)
@@ -265,6 +277,8 @@ module mod4(i_argA, o_result, o_status);
 
     always_comb 
     begin
+        o_result = '0;
+        o_status = '0;
         temp = i_argA;
         status = '0;
         if(i_argA[m - 1] == 1'b0)
