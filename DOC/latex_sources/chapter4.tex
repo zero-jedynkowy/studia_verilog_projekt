@@ -1,0 +1,11 @@
+Zaimplementowane flagi o\_status:
+
+\begin{itemize}
+	\item ERROR - operacja nie została wykonana - o\_result jest nieokreślone; pierwszy bit o\_status od prawej jest równy 1,
+	\item NEG - wynik jest liczbą ujemną; drugi bit o\_status od prawej jest równy 1,
+	\item EVEN - w wyniku jest parzysta liczba jedynek; trzeci bit o\_status od prawej jest równy 1,
+	\item ONES - wszystkie bity o\_result ustawione; ostatni bit o\_status od prawej jest równy 1,
+\end{itemize}
+
+\noindent
+Jeśli wynik jest nieokreslony (flaga ERROR) to pozostałe bity nie są ustawiane; warunki pozostałych flag nie są sprawdzane.
