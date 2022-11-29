@@ -131,7 +131,8 @@ module mod2(i_argA, i_argB, o_result, o_status);
     logic [3:0] status;
     logic [m - 1:0] temp1;
     logic [m - 1:0] temp2;
-
+    logic sign1;
+    logic sign2;
     integer x;
 
     always_comb 
@@ -140,19 +141,31 @@ module mod2(i_argA, i_argB, o_result, o_status);
         o_status = '0;
         temp = '0;
         temp2 = '0;
+        x = 0;
         temp1 = '0;
         status = '0;
-        if(i_argB[m - 1] == 1'b1 && i_argA[m - 1] == 1'b0)
+        sign1 = '0;
+        sign2 = '0;
+        for(int i=0; i<m; i++)
+        begin
+            if(i == m - 1)
+            begin
+                sign1 = i_argA[i];
+                sign2 = i_argB[i];
+            end
+        end
+
+        if(sign2 == 1'b1 && sign1 == 1'b0)
         begin
             temp = '0;
             o_result = temp;
         end
-        if(i_argB[m - 1] == 1'b0 && i_argA[m - 1] == 1'b1)
+        if(sign2 == 1'b0 && sign1 == 1'b1)
         begin
             temp = '0 + 1'b1;
             o_result = temp;
         end
-        if(i_argA[m - 1] == 1'b1 && i_argB[m - 1] == 1'b1)
+        if(sign1 == 1'b1 && sign2 == 1'b1)
         begin
             temp1 = i_argA;
             temp2 = i_argB;
@@ -160,7 +173,8 @@ module mod2(i_argA, i_argB, o_result, o_status);
             temp2[m - 1] = '0;
             if(temp1 > temp2)
             begin
-                temp = '0 + 1'b1;
+                temp = '0;
+                temp = temp + 1'b1;
                 o_result = temp;
             end
             else
@@ -169,7 +183,7 @@ module mod2(i_argA, i_argB, o_result, o_status);
                 o_result = temp;
             end
         end
-        if(i_argA[m - 1] == 1'b0 && i_argB[m - 1] == 1'b0)
+        if(sign1 == 1'b0 && sign1 == 1'b0)
         begin
             if(i_argA < i_argB)
             begin
@@ -227,6 +241,7 @@ module mod3(i_argA, i_argB, o_result, o_status);
         o_result = '0;
         o_status = '0;
         status = '0;
+        x = 0;
         temp = i_argA;
         if(i_argB[m - 1] != 1'b1 && m > i_argB)
         begin
@@ -281,6 +296,7 @@ module mod4(i_argA, o_result, o_status);
         o_status = '0;
         temp = i_argA;
         status = '0;
+        x = 0;
         if(i_argA[m - 1] == 1'b0)
         begin
             o_result = temp;
@@ -305,13 +321,6 @@ module mod4(i_argA, o_result, o_status);
         begin
             status = status + 4'b0010;
         end
-        for(int i = 0; i < m; i++)
-        begin
-            if(temp[i] == 1)
-            begin
-                x = x + 1;
-            end
-        end
         if(x % 2 == 0)
         begin
             status = status + 4'b0100;
@@ -319,6 +328,13 @@ module mod4(i_argA, o_result, o_status);
         if(temp == '1)
         begin
             status = status + 4'b1000;
+        end
+        for(int i = 0; i < m; i++)
+        begin
+            if(temp[i] == 1)
+            begin
+                x = x + 1;
+            end
         end
         o_status = status;
     end

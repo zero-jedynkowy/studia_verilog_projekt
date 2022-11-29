@@ -43,10 +43,10 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
             begin
                 new_result = o_result3;
             end
-            2'b11:  
-            begin
-                new_result = o_result4;
-            end
+            // 2'b11:  
+            // begin
+            //     new_result = o_result4;
+            // end
             default: new_result = '0;
         endcase
         case(i_oper)
@@ -62,11 +62,11 @@ module exe_unit_w1(i_oper, i_argA, i_argB, i_clk, i_rsn, o_result, o_status);
             begin
                 new_status = o_status3;
             end
-            2'b11:  
-            begin
-                new_status = o_status4;
-            end
-            default: o_result = '0;
+            // 2'b11:  
+            // begin
+            //     new_status = o_status4;
+            // end
+            default: new_result = '0;
         endcase
     end
 
