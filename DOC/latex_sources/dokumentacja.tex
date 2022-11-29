@@ -5,12 +5,17 @@
 \usepackage{graphicx}
 \usepackage{blindtext}
 
+\usepackage{tikz}
+\usetikzlibrary{positioning, matrix, arrows.meta,calc}
+
+\usepackage[font=small,labelfont=bf, justification=justified, format=plain]{caption}
 \tolerance=1
 \emergencystretch=\maxdimen
 \hyphenpenalty=10000
 \hbadness=10000
 
 \renewcommand{\contentsname}{Spis treści}
+\renewcommand{\figurename}{Ilustracja nr.}
 
 \usepackage[margin=2cm]{geometry}
 
@@ -46,10 +51,14 @@
 	\input{chapter2.tex}
 	
 	\section{Schemat blokowy struktury jednostki}
-	\blindtext
+	
+	\input{chapter3.tex}
+	
 	\section{Sygnały zaimplementowanych flag i ich wartości}
 	
 	\input{chapter4.tex}
+
+	\newpage
 
 	\section{Przykład użycia modułu}
 	\blindtext

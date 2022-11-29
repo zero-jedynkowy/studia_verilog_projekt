@@ -1,0 +1,55 @@
+	\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[
+		myline/.style={draw=black!40!black, thick},
+		box/.style={myline, minimum height=1cm, minimum width=1cm, font=\sffamily, inner sep=.3333em}, >=Stealth]
+		
+		\draw [blue] (-11,-1) rectangle (7,9);
+		
+		\matrix (ALU) [matrix of nodes, inner ysep=6mm, nodes=box, myline, column sep=20mm, row sep = 6mm] at (-2,4)
+		{|(mod1)|mod1 \\ |(mod2)|mod2 & |(mux)|mux & |(sync)|sync \\ |(mod3)|mod3 \\ |(mod4)|mod4 \\};
+		
+		
+		
+		\node[box] at (-10,0)  (argA) {i\_argA};
+		\node[box] at (-10, 2) (argB) {i\_argB};
+		\node[box] at (-10,4)  (oper) {i\_oper};
+		\node[box] at (-10,6)  (rsn) {i\_rsn};
+		\node[box] at (-10,8)  (clk) {i\_clk};
+		
+		\node[box] at (5,6)  (result) {o\_result};
+		\node[box] at (5,8)  (status) {o\_status};
+		
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 6)|-(mod1);
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 4)|-(mod2);;
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 2)|-(mod3);
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 1)|-(mod4);
+		\draw[-, red, line width=0.5mm]  (sync)|-(result);	
+		\draw[-, red, line width=0.5mm]  (sync)|-(status);
+		
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 6)|-(mod1);
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 4)|-(mod2);
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 2)|-(mod3);
+		\draw[-, red, line width=0.5mm]  (argA)|-(-10, 1)|-(-7, 1)|-(-7, 1)|-(mod4);
+		
+		%\draw[-, blue, line width=0.5mm]  (argB)|-(-10, 3)|-(-7.5, 3)|-(-7.5, 3)|-(-7.5, 1.8)|-(-5.64, 1.8);
+		%\draw[-, violet, line width=0.5mm]  (argB)|-(-10, 3)|-(-7.5, 3)
+		\draw[-, violet, line width=0.5mm]  (argB)|-(-10, 3)|-(-7.5, 3)|-(-7.5, 1.9)|-(-5.65, 1.9);
+		\draw[-, violet, line width=0.5mm]  (argB)|-(-10, 3)|-(-7.5, 3)|-(-5.65, 3);
+		\draw[-, violet, line width=0.5mm]  (argB)|-(-10, 3)|-(-7.5, 3)|-(-7.5, 5)|-(-5.65, 5);
+		\draw[-, violet, line width=0.5mm]  (argB)|-(-10, 3)|-(-7.5, 3)|-(-7.5, 6.2)|-(-5.65, 6.2);;
+		
+		\draw[-, lime, line width=0.5mm]  (oper)|-(-8, 5)|-(-8, 8)|-(-1.5, 8)|-(-1.5, 5.32);
+		
+		\draw[-, teal, line width=0.5mm]  (clk)|-(-8, 8.7)|-(0.8, 8.7)|-(0.8, 5.28);
+		
+		\draw[-, orange, line width=0.5mm]  (rsn)|-(-9, 7)|-(-9, 8.3)|-(1, 8.3)|-(1, 5.28);
+		
+		\draw[-, magenta, line width=0.5mm]  (-1.37,4.75)|-(sync.west);
+		\draw[-, blue, line width=0.5mm]  (mod2.east)|-(mux);
+		\draw[-, blue, line width=0.5mm]  (mod3.east)|-(-1.9, 3.15)|-(mux.south);
+		\draw[-, blue, line width=0.5mm]  (mod4.east)|-(-1.9, 1.5)|-(mux.south);
+		\draw[-, blue, line width=0.5mm]  (mod1.east)|-(-1.9, 6.5)|-(mux.north);
+	\end{tikzpicture}
+	\caption{Schemat blokowy \textbf{\emph{exe\_unit\_w1}}}
+\end{figure}
