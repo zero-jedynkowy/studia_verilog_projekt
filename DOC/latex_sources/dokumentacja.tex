@@ -5,20 +5,25 @@
 \usepackage{graphicx}
 \usepackage{blindtext}
 \usepackage{listings}
-\def\arraystretch{1.5}%
-
+\usepackage{hyperref}
+\usepackage[margin=2cm]{geometry}
 \usepackage{subfig}
 \usepackage{tikz}
-\usetikzlibrary{positioning, matrix, arrows.meta,calc}
 
-\usepackage[font=small,labelfont=bf, justification=justified, format=plain]{caption}
+
+\renewcommand{\contentsname}{Spis treści}
+\renewcommand{\figurename}{Ilustracja nr.}
+\renewcommand{\lstlistingname}{Skrypt nr.}
+
 \tolerance=1
 \emergencystretch=\maxdimen
 \hyphenpenalty=10000
 \hbadness=10000
 
-
-\usepackage{hyperref}
+\usetikzlibrary{positioning, matrix, arrows.meta,calc}
+\lstdefinestyle{tt}{basicstyle=\small\ttfamily,keywordstyle=\bfseries,language=[LaTeX]{TeX}}
+\lstdefinestyle{rm}{basicstyle=\ttfamily,keywordstyle=\slshape,language=[LaTeX]{TeX}}
+\def\arraystretch{1.5}%
 \hypersetup{
 	colorlinks,
 	citecolor=black,
@@ -26,18 +31,10 @@
 	linkcolor=black,
 	urlcolor=black
 }
-
-\renewcommand{\contentsname}{Spis treści}
-\renewcommand{\figurename}{Ilustracja nr.}
-\renewcommand{\lstlistingname}{Skrypt nr.}
 \lstset{ 
-	basicstyle=\footnotesize, frame=tb,
+	basicstyle=\footnotesize,
 	xleftmargin=.2\textwidth, xrightmargin=.2\textwidth
 }
-\usepackage[margin=2cm]{geometry}
-
-\lstdefinestyle{tt}{basicstyle=\small\ttfamily,keywordstyle=\bfseries,language=[LaTeX]{TeX}}
-\lstdefinestyle{rm}{basicstyle=\ttfamily,keywordstyle=\slshape,language=[LaTeX]{TeX}}
 
 \title{}
 \author{}
@@ -86,4 +83,6 @@
 	\newpage
 	\section{Raport z syntezy logicznej}
 	\input{chapter7.tex}
+	\section{Synteza projektu i komendy}
+	\input{chapter8.tex}
 \end{document}

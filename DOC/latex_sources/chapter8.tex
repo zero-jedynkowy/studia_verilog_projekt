@@ -1,0 +1,27 @@
+\noindent
+Założenia systemowe: Linux (testowano na Ubuntu (\textbf{\emph{makefile}}) i Windows, (gdzie komendy z \textbf{\emph{makefile}} są wpisywane ręcznie).
+
+\bigskip
+
+\noindent
+Założenia dotyczące plików:
+\begin{itemize}
+	\item \textbf{\emph{makefile}}, znajdujący się w folderze \textbf{\emph{WORK}},
+	\item \textbf{\emph{run.ys}}, znajdujący się w folderze \textbf{\emph{WORK}}),
+	\item \textbf{\emph{exe\_unit\_w1.sv}}, znajdujący się w folderze \textbf{\emph{MODEL}},
+	\item \textbf{\emph{otherModules.sv}}, znajdujący się w folderze \textbf{\emph{MODEL}},
+	\item \textbf{\emph{testbench.sv}}, znajdujący się w folderze \textbf{\emph{MODEL}},
+\end{itemize}
+
+\noindent
+znajdują się w jednym folderze. Aby zsyntezować projekt, wykonać testbench i wyświetlić przebiegi wystarczy użyć komendy:
+
+
+\begin{lstlisting}[language=bash, style=rm]
+		$ ./makefile
+\end{lstlisting}
+
+\bigskip
+
+\noindent
+Testowano przy użyciu: Icarus Verilog w wersji 11 i 12 oraz Yosys w wersji 0.23.

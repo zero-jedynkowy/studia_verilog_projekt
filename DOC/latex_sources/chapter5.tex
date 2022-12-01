@@ -26,7 +26,7 @@ Na ilustracji nr. 3 wykonywane są dwie operacje: porównanie liczb A i B oraz k
 
 \subsection{Przykład nr. 3}
 
-Na ilustracji nr. 4 widać wykonywanie operacji odejmowania liczb A - B oraz zamianę liczby A z kodowanie ZNAK-MODUŁ na U2 (moduły: \textbf{\emph{mod1}} i \textbf{\emph{mod4}}). Na początku A ma wartość \(1111_{ZM}\) a B \(0000_{ZM}\), więc ich różnica równa jest początkowemu A; widać tutaj ustawienie wszystkich flag \textbf{\emph{o\_status}}, oprócz bitu \textbf{\emph{ERROR}}. Następnie mzieniane są wartości A i B, których różnica powoduje przepełnienie, więc błąd (wyjście - niezdefiniowane, a flaga \textbf{\emph{ERROR}} ustawiona na \(1_2\)). W kolejnym takcie zegara, zmianie ulega wejście A oraz operacja na zamianę kodowanie z ZNAK-MODUŁ na U2: wartość \(1011_{ZM}\) zamieniana jest na \(1101_{U2}\). Pózniej zmieniana jest wartość A na ujemne zero (\(1000_{ZM}\)); błąd - wyjście niezdefiniowane.
+Na ilustracji nr. 4 widać wykonywanie operacji odejmowania liczb A - B oraz zamianę liczby A z kodowanie ZNAK-MODUŁ na U2 (moduły: \textbf{\emph{mod1}} i \textbf{\emph{mod4}}). Na początku A ma wartość \(1111_{ZM}\), a B \(0000_{ZM}\), więc ich różnica równa jest początkowemu A; widać tutaj ustawienie wszystkich flag \textbf{\emph{o\_status}}, oprócz bitu \textbf{\emph{ERROR}}. Następnie zmieniane są wartości A i B, których różnica powoduje przepełnienie, więc błąd (wyjście - niezdefiniowane, a flaga \textbf{\emph{ERROR}} ustawiona na \(1_2\)). W kolejnym takcie zegara, zmianie ulega wejście A oraz operacja na zamianę kodowanie z ZNAK-MODUŁ na U2: wartość \(1011_{ZM}\) zamieniana jest na \(1101_{U2}\). Pózniej zmieniana jest wartość A na ujemne zero (\(1000_{ZM}\)); błąd - wyjście niezdefiniowane.
 
 \begin{figure}[h!]
 	\centering
