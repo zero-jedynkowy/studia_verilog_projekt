@@ -5,8 +5,9 @@
 \usepackage{graphicx}
 \usepackage{blindtext}
 \usepackage{listings}
+\def\arraystretch{1.5}%
 
-
+\usepackage{subfig}
 \usepackage{tikz}
 \usetikzlibrary{positioning, matrix, arrows.meta,calc}
 
@@ -16,10 +17,23 @@
 \hyphenpenalty=10000
 \hbadness=10000
 
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
 \renewcommand{\contentsname}{Spis treści}
 \renewcommand{\figurename}{Ilustracja nr.}
 \renewcommand{\lstlistingname}{Skrypt nr.}
-
+\lstset{ 
+	basicstyle=\footnotesize, frame=tb,
+	xleftmargin=.2\textwidth, xrightmargin=.2\textwidth
+}
 \usepackage[margin=2cm]{geometry}
 
 \lstdefinestyle{tt}{basicstyle=\small\ttfamily,keywordstyle=\bfseries,language=[LaTeX]{TeX}}
@@ -69,11 +83,7 @@
 	\input{chapter5.tex}
 	\section{Lista plików}
 	\input{chapter6.tex}
+	\newpage
 	\section{Raport z syntezy logicznej}
-	\begin{lstlisting}[language=bash, style=rm]
-		$ gcc lab3.c -o wielomian.out wielomiany.c -lm -g
-	\end{lstlisting}
-	\section{Raport z symulacji układów}
-	\blindtext
-	
+	\input{chapter7.tex}
 \end{document}
