@@ -17,42 +17,46 @@ module testbench;
     begin
         $dumpfile("signals.vcd");
         $dumpvars(0, testbench);
-        rsn = '0;
+        rsn = '1;
+        clk = '1;
+        a = 4'b1111;
+        b = 4'b0000;
+        oper = 2'b00;
+        #1
+        clk = '1;
+        #1
         clk = '0;
+        #1
+        clk = '1;
+        #1
+        a = 4'b1111;
+        b = 4'b0111;
+        clk = '0;
+        #1
         a = 4'b0111;
         b = 4'b1111;
-        oper = 2'b00;
-        #1
-        rsn = '1;
-        #1
-        rsn = '1;
-        #1
-        a = 4'b0111;
-        b = 4'b0011;
-        oper = 2'b00;
         clk = '1;
         #1
         clk = '0;
-        rsn = '0;
         #1
-        rsn = '1;
-        oper = 2'b10;
-        a = 4'b0000;
-        b = 4'b0011;
+        clk = '1;
+        #1
+        oper = 2'b11;
+        #1
+        a = 4'b1011;
+        clk = '0;
         #1
         clk = '1;
         #1
         clk = '0;
         #1
+        clk = '1;
+        a = 4'b1000;
+        #1
         clk = '0;
-        a = 4'b1101;
-        b = 4'b0011;
         #1
         clk = '1;
         #1
-        clk = '0;
-        #1
-        clk = '0;
         $finish;
     end
 endmodule

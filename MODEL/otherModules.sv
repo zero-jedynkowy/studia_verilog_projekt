@@ -195,7 +195,7 @@ module mod2(i_argA, i_argB, o_result, o_status);
                 o_result = temp;
             end
         end
-        if(sign1 == 1'b0 && sign1 == 1'b0)
+        if(sign1 == 1'b0 && sign2 == 1'b0)
         begin
             if(i_argA < i_argB)
             begin
