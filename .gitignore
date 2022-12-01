@@ -1,5 +1,5 @@
 *.aux
-*.log
+DOC/latex_sources/*.log
 *.synctex.gz
 *.toc
 MODEL/tymczasowe

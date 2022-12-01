@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{blindtext}
+\usepackage{listings}
+
 
 \usepackage{tikz}
 \usetikzlibrary{positioning, matrix, arrows.meta,calc}
@@ -16,9 +18,12 @@
 
 \renewcommand{\contentsname}{Spis treści}
 \renewcommand{\figurename}{Ilustracja nr.}
+\renewcommand{\lstlistingname}{Skrypt nr.}
 
 \usepackage[margin=2cm]{geometry}
 
+\lstdefinestyle{tt}{basicstyle=\small\ttfamily,keywordstyle=\bfseries,language=[LaTeX]{TeX}}
+\lstdefinestyle{rm}{basicstyle=\ttfamily,keywordstyle=\slshape,language=[LaTeX]{TeX}}
 
 \title{}
 \author{}
@@ -61,11 +66,13 @@
 	\newpage
 
 	\section{Przykład użycia modułu}
-	\blindtext
+	\input{chapter5.tex}
 	\section{Lista plików}
-	\blindtext
+	\input{chapter6.tex}
 	\section{Raport z syntezy logicznej}
-	\blindtext
+	\begin{lstlisting}[language=bash, style=rm]
+		$ gcc lab3.c -o wielomian.out wielomiany.c -lm -g
+	\end{lstlisting}
 	\section{Raport z symulacji układów}
 	\blindtext
 	
