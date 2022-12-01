@@ -8,8 +8,10 @@ module testbench;
     logic clk, rsn;
     logic [BITS_1 - 1:0] result;
     logic [3:0] status;
-
+    logic [BITS_1 - 1:0] result_rtl;
+    logic [3:0] status_rtl;
     exe_unit_w1 # (.m(BITS_1), .n(BITS_2)) m_exe_unit_w1 (.i_oper(oper), .i_argA(a), .i_argB(b), .i_clk(clk), .i_rsn(rsn), .o_status(status), .o_result(result));
+    exe_unit_w1_rtl m_exe_unit_w1_rtl (.i_oper(oper), .i_argA(a), .i_argB(b), .i_clk(clk), .i_rsn(rsn), .o_status(status_rtl), .o_result(result_rtl));
 
     initial 
     begin
@@ -17,15 +19,40 @@ module testbench;
         $dumpvars(0, testbench);
         rsn = '0;
         clk = '0;
-        #1
-        oper = 2'b00;
         a = 4'b0111;
-        b = 4'b0001;
+        b = 4'b1111;
+        oper = 2'b00;
+        #1
+        rsn = '1;
+        #1
+        rsn = '1;
+        #1
+        a = 4'b0111;
+        b = 4'b0011;
+        oper = 2'b00;
         clk = '1;
         #1
         clk = '0;
-
-        
+        rsn = '0;
+        #1
+        rsn = '1;
+        oper = 2'b10;
+        a = 4'b0000;
+        b = 4'b0011;
+        #1
+        clk = '1;
+        #1
+        clk = '0;
+        #1
+        clk = '0;
+        a = 4'b1101;
+        b = 4'b0011;
+        #1
+        clk = '1;
+        #1
+        clk = '0;
+        #1
+        clk = '0;
         $finish;
     end
 endmodule

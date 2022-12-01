@@ -1,0 +1,16 @@
+read_verilog -sv exe_unit_w1.sv
+read_verilog -sv otherModules.sv
+
+copy exe_unit_w1 exe_unit_w1_rtl
+
+hierarchy -top exe_unit_w1_rtl
+
+synth
+
+abc -g AND,OR,XOR
+
+opt_clean
+
+write_verilog -noattr exe_unit_w1_rtl.sv
+    
+stat -tech cmos

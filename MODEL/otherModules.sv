@@ -8,28 +8,40 @@ module mod1(i_argA, i_argB, o_result, o_status);
     output logic [m - 1:0] o_result;
     output logic [3:0] o_status;
 
-    logic checkFlag;
     logic [m - 1:0] maxValue;
     logic [m - 1:0] temp;
     logic [m - 1:0] temp1;
     logic [m - 1:0] temp2;
     logic [3:0] status;
-    
+    logic sign1;
+    logic sign2;
+    logic checkFlag;
+
     integer x;
+
     always_comb 
     begin
+        x = 0;
         temp = '0;
-        temp2 = '0;
         temp1 = '0;
+        temp2 = '0;
         o_result = '0;
         o_status = '0;
-        temp = '0;
-        x = 0;
         checkFlag = '0;
         maxValue = '1;
         maxValue[m - 1] = 1'b0;
         status = '0;
-        if(i_argA[m - 1] == 1'b0 && i_argB[m - 1] == 1'b0)
+        sign1 = '0;
+        sign2 = '0;
+        for(int i=0; i<m; i++)
+        begin
+            if(i == m - 1)
+            begin
+                sign1 = i_argA[i];
+                sign2 = i_argB[i];
+            end
+        end
+        if(sign1 == 1'b0 && sign2 == 1'b0)
         begin
             if(i_argA >= i_argB)
             begin
@@ -41,7 +53,7 @@ module mod1(i_argA, i_argB, o_result, o_status);
                 temp[m - 1] = 1'b1;
             end
         end
-        if(i_argA[m - 1] == 1'b1 && i_argB[m - 1] == 1'b1)
+        if(sign1 == 1'b1 && sign2 == 1'b1)
         begin
             temp1 = i_argA;
             temp2 = i_argB;
@@ -58,7 +70,7 @@ module mod1(i_argA, i_argB, o_result, o_status);
                 temp[m - 1] = 1'b0;
             end
         end
-        if(i_argA[m - 1] == 1'b1 && i_argB[m - 1] == 1'b0)
+        if(sign1 == 1'b1 && sign2 == 1'b0)
         begin
             temp1 = i_argA;
             temp2 = i_argB;
@@ -71,7 +83,7 @@ module mod1(i_argA, i_argB, o_result, o_status);
             end
             temp[m - 1] = 1'b1;
         end
-        if(i_argA[m - 1] == 1'b0 && i_argB[m - 1] == 1'b1)
+        if(sign1 == 1'b0 && sign2 == 1'b1)
         begin
             temp1 = i_argA;
             temp2 = i_argB;
@@ -233,6 +245,7 @@ module mod3(i_argA, i_argB, o_result, o_status);
 
     logic [m - 1:0] temp;
     logic [3:0] status;
+    logic sign1;
 
     integer x;
 
@@ -243,7 +256,17 @@ module mod3(i_argA, i_argB, o_result, o_status);
         status = '0;
         x = 0;
         temp = i_argA;
-        if(i_argB[m - 1] != 1'b1 && m > i_argB)
+        sign1 = '0;
+
+        for(int i=0; i<m; i++)
+        begin
+            if(i == m - 1)
+            begin
+                sign1 = i_argB[i];
+            end
+        end
+
+        if(sign1 != 1'b1 && m > i_argB)
         begin
             temp[i_argB] = '0;
             o_result = temp;
@@ -288,6 +311,8 @@ module mod4(i_argA, o_result, o_status);
     logic [m - 1:0] temp;
     logic [3:0] status;
 
+    logic sign1;
+
     integer x;
 
     always_comb 
@@ -297,7 +322,17 @@ module mod4(i_argA, o_result, o_status);
         temp = i_argA;
         status = '0;
         x = 0;
-        if(i_argA[m - 1] == 1'b0)
+        sign1 = '0;
+
+        for(int i=0; i<m; i++)
+        begin
+            if(i == m - 1)
+            begin
+                sign1 = i_argA[i];
+            end
+        end
+
+        if(sign1 == 1'b0)
         begin
             o_result = temp;
         end
