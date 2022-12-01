@@ -1,5 +1,7 @@
+\subsection{Przykład nr. 1}
+
 \noindent
-Na ilustracji nr. 2 przedstawiono wykonanie dwóch operacji: odejmowanie liczb A i B oraz zmianę bitu w argumencie A oznaczonego indeksem B (moduły: \emph{mod1} i \emph{mod3}). Przy pierwszej operacji na początku wynik jest niezdefiniowany i flaga błędu ustawiona na 1; przepełnienie wartości. W kolejnej operacji w argumencie B został zmieniony na indeksie B: B równe jest 3, więc bit nr. 3 (liczony od zera) w A został zmieniony na 0. Przy operacji ustawiania bitu poprzez B widać ustawienie flagi 0b0100 która oznacza że wynik posiada parzystą liczbę jedynek (co też jest widoczne na wyjściu result).
+Na ilustracji nr. 2 przedstawiono wykonanie dwóch operacji: odejmowanie liczb A i B oraz zmianę bitu w argumencie A oznaczonego indeksem B (moduły: \textbf{\emph{mod1}} i \textbf{\emph{mod3}}). Przy pierwszej operacji na początku wynik jest niezdefiniowany i flaga błędu ustawiona na 1; przepełnienie wartości. W kolejnej operacji w argumencie B został zmieniony bit na indeksie B: B równe jest \(3_{10}\), więc bit nr. \(3_{10}\) (liczony od \(0_{10}\)) w A został zmieniony na \(0_2\). Przy operacji ustawiania bitu poprzez B widać ustawienie flagi \(0100_2\) która oznacza że wynik posiada parzystą liczbę jedynek (co też jest widoczne na wyjściu \textbf{\emph{o\_result}}).
 
 \begin{figure}[h!]
 	\centering
@@ -8,3 +10,27 @@ Na ilustracji nr. 2 przedstawiono wykonanie dwóch operacji: odejmowanie liczb A
 	\label{fig:img1}
 \end{figure}
 
+\subsection{Przykład nr. 2}
+
+\noindent
+Na ilustracji nr. 3 wykonywane są dwie operacje: porównanie liczb A i B oraz konwersja liczby w kodowaniu ZNAK-MODUŁ na U2 (moduły: \textbf{\emph{mod2}} i \textbf{\emph{mod4}}). Na początku liczba A jest większa od liczby B (liczba A jest dodatnia, a liczba B jest ujemna) więc na wyjściu jest \(0_{ZM}\). Przy następnych wartościach A i B (A mniejsze od B) wyjście równe jest \(1_{10}\). Następnie zmieniana jest operacja (ZM na U2) gdzie wejście A równe jest \(1011_{ZM}\) które pózniej konwertowane jest na \(1101_{U2}\). Po tej konwersji na wejście podane jest ujemne zero (\(1000_{ZM}\)) które dla \textbf{\emph{mod4}} jest błędem, więc flaga \textbf{\emph{o\_status}} ustawiana jest na \(0001_{2}\), a wyjście jest niezdefiniowane.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img2}
+	\caption{Widok wykonania testbenchu RTL i oryginalnych plikow w GTKWave}
+	\label{fig:img1}
+\end{figure}
+
+\newpage
+
+\subsection{Przykład nr. 3}
+
+Na ilustracji nr. 4 widać wykonywanie operacji odejmowania liczb A - B oraz zamianę liczby A z kodowanie ZNAK-MODUŁ na U2 (moduły: \textbf{\emph{mod1}} i \textbf{\emph{mod4}}). Na początku A ma wartość \(1111_{ZM}\) a B \(0000_{ZM}\), więc ich różnica równa jest początkowemu A; widać tutaj ustawienie wszystkich flag \textbf{\emph{o\_status}}, oprócz bitu \textbf{\emph{ERROR}}. Następnie mzieniane są wartości A i B, których różnica powoduje przepełnienie, więc błąd (wyjście - niezdefiniowane, a flaga \textbf{\emph{ERROR}} ustawiona na \(1_2\)). W kolejnym takcie zegara, zmianie ulega wejście A oraz operacja na zamianę kodowanie z ZNAK-MODUŁ na U2: wartość \(1011_{ZM}\) zamieniana jest na \(1101_{U2}\). Pózniej zmieniana jest wartość A na ujemne zero (\(1000_{ZM}\)); błąd - wyjście niezdefiniowane.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{img3}
+	\caption{Widok wykonania testbenchu RTL i oryginalnych plikow w GTKWave}
+	\label{fig:img1}
+\end{figure}

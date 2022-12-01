@@ -1,11 +1,11 @@
-Zaimplementowane flagi o\_status:
+Zaimplementowane flagi \textbf{\emph{o\_status}}; każdy bit jest przypisany do danej flagi:
 
 \begin{itemize}
-	\item \emph{\textbf{ERROR}} - operacja nie została wykonana - \textbf{\emph{o\_status}} = 0b0001,
-	\item \emph{\textbf{NEG}} - wynik jest liczbą ujemną; \textbf{\emph{o\_status}} = 0b0010,
-	\item \emph{\textbf{EVEN}} - w wyniku jest parzysta liczba jedynek; \textbf{\emph{o\_status}} = 0b0100,
-	\item \emph{\textbf{ONES}} - wszystkie bity o\_result ustawione; \textbf{\emph{o\_status}} = 0b1000.
+	\item \emph{\textbf{ERROR}} - operacja nie została wykonana - \textbf{\emph{o\_status}} = \(0001_2\),
+	\item \emph{\textbf{NEG}} - wynik jest liczbą ujemną; \textbf{\emph{o\_status}} = \(0010_2\),
+	\item \emph{\textbf{EVEN}} - w wyniku jest parzysta liczba jedynek; \textbf{\emph{o\_status}} = \(0100_2\),
+	\item \emph{\textbf{ONES}} - wszystkie bity o\_result ustawione; \textbf{\emph{o\_status}} = \(1000_2\).
 \end{itemize}
 
 \noindent
-Jeśli wynik jest nieokreslony (flaga \emph{\textbf{ERROR}}) to pozostałe bity nie są ustawiane; warunki pozostałych flag nie są sprawdzane.
+Jeśli wynik jest nieokreślony (flaga \emph{\textbf{ERROR}}) to pozostałe bity nie są ustawiane (warunki pozostałych flag nie są sprawdzane); jednocześnie może być ustawione wiele flag.
